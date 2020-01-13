@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app='ShoppingListApp'>
+  <head>
+    <meta charset="utf-8">
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <title>To-Do List</title>
+  </head>
+  <body>
+    
+    <div ng-controller = "ShoppingListController as list1">
+    <div  id="list1">
+      <h1>Shopping List</h1>
+      <input type="text" ng-model = "list1.name" placeholder="Item Name">
+      <input type="text" ng-model = "list1.quantity" placeholder="Item Quantity">
+      <button ng-click= "list1.addItem();">Add Item</button>
+      <p ng-show="!list1.items[0]"> Everything is bought!</p>
+        <ol >
+          
+        <li ng-repeat = "item in list1.items">
+          Buy {{ item.quantity }} {{ item.name }}
+          <button ng-click = list1.removeItem($index);>Remove Item</button>
+          <button ng-click = list1.addboughtItem($index);>Bought</button>
+        </li>
+      </ol>
+    </div>
+    
+    <div id="list2">
+      <h1>Already Bought</h1>
+      <p ng-show="!list1.bought_items[0]">Nothing bought yet</p>
+
+        <ol>
+        <li ng-repeat = "item in list1.bought_items">
+          Bought {{ item.quantity }} {{ item.name }}
+        </li>
+      </ol>
+    </div>
+    </div>
+
+    
+
+  </body>
+</html>
